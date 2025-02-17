@@ -1,0 +1,23 @@
+A user wants to be able to see all articles on the home page, with options to sort and filter by topics, authors, and order (as queries).
+
+Home Page: /articles/:article_id? 
+
+A user wants to be able to click on an article and be taken to a page for the article. This page will also include a button to expand the article's comments. If the user is signed in, they will have the ability to like/vote for the article.
+
+/articles/:article_id?
+
+If the user clicks Comments, they will be able to see the comments posted for the article. They can comments on the article, and delete comments if they were posted by the user
+
+./articles/:article_id/comments
+
+A user wants to be able to see a list of all available topics on the Topics Page. Each topic is a link that redirects to a page showing articles related to that topic.
+
+/topics
+
+A user should be able to click Most Popular and see articles with the highest number of votes.
+
+/popular
+
+A user should be able to access their information on the user page, seeing all the articles they have posted
+
+/user
