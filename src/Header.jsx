@@ -5,7 +5,7 @@ export default function Header() {
         <header>
             <h1>NC News</h1>
             <nav>
-                <Link to="/">Home</Link>
+                <Link to="/articles">Articles</Link>
             </nav>
         </header>
     )

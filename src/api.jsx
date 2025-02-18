@@ -1,16 +1,23 @@
 import axios from 'axios';
 
-export default function api(path) {
+const instance = axios.create({
+    baseURL: 'https://nc-news-njb6.onrender.com/api/'
+});
 
-    const instance = axios.create({
-        baseURL: 'https://nc-news-njb6.onrender.com/api/'
-    });
+export function getArticles(path) {
 
-    const config = {
-        url: path,
-    }
+    return instance(path)
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
 
-    return instance(config)
+export function getComments(path) {
+
+    return instance(path)
         .then((response) => {
             return response.data;
         })
