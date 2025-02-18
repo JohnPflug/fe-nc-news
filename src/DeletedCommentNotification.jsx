@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 
-export default function PostNotification({ setCommentPosted }) {
-    const [message, setMessage] = useState('Comment posted!');
+export default function DeletedCommentNotification({ setCommentDeleted }) {
+    const [message, setMessage] = useState('Message Deleted!');
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             setMessage('');
-            setCommentPosted(false);
+            setCommentDeleted(false)
         }, 3000);
 
         return () => clearTimeout(timeoutId);
-    }, [setCommentPosted]);
+    }, []);
 
     return <p>{message}</p>;
-}
+};
