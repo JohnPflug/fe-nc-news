@@ -43,3 +43,11 @@
 .read-the-docs {
   color: #888;
 }
+
+.upVote_button {
+  color: green;
+}
+
+.downVote_button {
+  color: red;
+}
