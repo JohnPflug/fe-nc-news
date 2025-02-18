@@ -9,10 +9,14 @@ export default function Comments({ article_id }) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getComments(`/articles/${article_id}/comments`).then((response) => {
-            setCommentData(response.comments);
-            setIsLoading(false);
-        })
+        getComments(`/articles/${article_id}/comments`)
+            .then(response => {
+                setCommentData(response.comments);
+                setIsLoading(false);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            })
     }, [])
 
 

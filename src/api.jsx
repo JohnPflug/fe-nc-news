@@ -15,6 +15,17 @@ export function getArticles(path) {
         });
 }
 
+export function getSingleArticle(path) {
+
+    return instance(path)
+        .then((response) => {
+            return response.data;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
 export function getComments(path) {
 
     return instance(path)
@@ -24,4 +35,20 @@ export function getComments(path) {
         .catch((error) => {
             console.log(error);
         });
+}
+
+export function patchVotes({ article_id, countChange }) {
+    console.log(typeof countChange);
+
+    const config = {
+        method: 'patch',
+        url: `/articles/${article_id}`,
+        data: {
+            inc_votes: countChange
+        }
+    };
+
+    return instance(config).then(response => {
+        console.log(response);
+    });
 }

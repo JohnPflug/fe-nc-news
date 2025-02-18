@@ -1,14 +1,16 @@
-import { getArticles } from "./api";
+import { getSingleArticle } from "./api";
 import Loading from "./Loading";
-import { ArticlesContainer } from "./BootContainers";
+import { SingleArticleContainer } from "./BootContainers";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
-export default function Articles() {
+export default function SingleArticle() {
     const [articleData, setArticleData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const { article_id } = useParams(null);
 
     useEffect(() => {
-        getArticles("/articles/")
+        getSingleArticle(`/articles/${article_id}`)
             .then(({ articles }) => {
                 setArticleData(articles)
                 setIsLoading(false);
@@ -20,6 +22,6 @@ export default function Articles() {
     }, [])
 
     return (
-        isLoading ? <Loading /> : <ArticlesContainer data={articleData} />
+        isLoading ? <Loading /> : <SingleArticleContainer data={articleData} article_id={article_id} />
     )
 }
