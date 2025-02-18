@@ -68,3 +68,19 @@ export function postComment(article_id, comment) {
             console.log(error)
         })
 }
+
+export function deleteComment(comment_id) {
+
+    const config = {
+        method: 'delete',
+        url: `comments/${comment_id}`,
+    };
+
+    return instance(config)
+        .then(response => {
+            return response;
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}

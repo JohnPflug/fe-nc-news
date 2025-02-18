@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { postComment } from "./api";
 import PostNotification from "./PostNotification";
 
@@ -12,17 +12,17 @@ export default function AddComment({ article_id, commentPosted, setCommentPosted
 
     useEffect(() => {
         setCommentData("");
-    }, [isCommenting])
+    }, [isCommenting]);
 
     const handleChange = (e) => {
-        setCommentData(e.target.value)
-    }
+        setCommentData(e.target.value);
+    };
 
     const handleSubmit = () => {
         const comment = {
             username: username,
             body: commentData
-        }
+        };
         setIsCommenting(false);
         postComment(article_id, comment)
             .then((response) => {
@@ -31,8 +31,8 @@ export default function AddComment({ article_id, commentPosted, setCommentPosted
             })
             .catch((error) => {
                 setError(error);
-            })
-    }
+            });
+    };
 
     return (
         <div>
@@ -47,12 +47,12 @@ export default function AddComment({ article_id, commentPosted, setCommentPosted
                                 <textarea className="comment_textarea" value={commentData} onChange={handleChange} />
                             </label>
                         </form>
-                        <button type="button" onClick={() => handleSubmit()}>Confirm Post</button>
+                        <button type="button" onClick={handleSubmit}>Confirm Post</button>
                         <button type="button" onClick={() => setIsCommenting(false)}>Cancel</button>
                     </>
                 )
             }
-            {commentPosted ? <PostNotification /> : null}
+            {commentPosted ? <PostNotification setCommentPosted={setCommentPosted} /> : null}
         </div >
-    )
+    );
 }
