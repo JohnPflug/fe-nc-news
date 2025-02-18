@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'https://nc-news-njb6.onrender.com/api/'
+    baseURL: 'https://nc-news-njb6.onrender.com/api'
 });
 
 export function getArticles(path) {
@@ -38,7 +38,6 @@ export function getComments(path) {
 }
 
 export function patchVotes({ article_id, countChange }) {
-    console.log(typeof countChange);
 
     const config = {
         method: 'patch',
@@ -49,6 +48,23 @@ export function patchVotes({ article_id, countChange }) {
     };
 
     return instance(config).then(response => {
-        console.log(response);
+        return response;
     });
+}
+
+export function postComment(article_id, comment) {
+
+    const config = {
+        method: 'post',
+        url: `/articles/${article_id}/comments`,
+        data: comment
+    };
+
+    return instance(config)
+        .then(response => {
+            return response;
+        })
+        .catch(error => {
+            console.log(error)
+        })
 }
