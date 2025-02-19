@@ -8,8 +8,8 @@ import RemoveComment from "./RemoveComment";
 import DeletedCommentNotification from "./DeletedCommentNotification";
 
 // Hard-coding username:
-// const username = 'grumpy19';
 let username;
+username = 'grumpy19';
 
 export default function Comments({ article_id }) {
     const [commentData, setCommentData] = useState(null);
