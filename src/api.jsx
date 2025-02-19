@@ -4,14 +4,15 @@ const instance = axios.create({
     baseURL: 'https://nc-news-njb6.onrender.com/api'
 });
 
-export function getArticles(sortByTopic) {
+export function getArticles(topic, sort_by, order) {
 
     const config = {
         url: `/articles`,
         params: {
-            topic: sortByTopic
+            topic: topic,
+            sort_by: sort_by,
+            order: order
         }
-
     };
 
     return instance(config)
