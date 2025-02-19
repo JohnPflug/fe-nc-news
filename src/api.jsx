@@ -4,9 +4,17 @@ const instance = axios.create({
     baseURL: 'https://nc-news-njb6.onrender.com/api'
 });
 
-export function getArticles(path) {
+export function getArticles(sortByTopic) {
 
-    return instance(path)
+    const config = {
+        url: `/articles`,
+        params: {
+            topic: sortByTopic
+        }
+
+    };
+
+    return instance(config)
         .then((response) => {
             return response.data;
         })
@@ -77,6 +85,17 @@ export function deleteComment(comment_id) {
     };
 
     return instance(config)
+        .then(response => {
+            return response;
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}
+
+export function getTopics() {
+
+    return instance("/topics")
         .then(response => {
             return response;
         })

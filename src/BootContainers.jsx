@@ -66,3 +66,27 @@ export function SingleArticleContainer({ data }) {
         </Container >
     );
 }
+
+export function TopicsContainer({ data }) {
+    const navigate = useNavigate();
+
+    return (
+        <Container>
+            <ListGroup >
+                {data.topics.map((topic) => (
+                    <ListGroup.Item key={topic.slug}>
+                        <Row>
+                            <Col md={10}>
+                                <b>{topic.slug}</b>
+                                <br />
+                                {topic.description}
+                                <br />
+                                <button type="button" onClick={() => navigate(`/articles?topic=${topic.slug}`)}>See related articles</button> <br />
+                            </Col>
+                        </Row>
+                    </ListGroup.Item>
+                ))}
+            </ListGroup>
+        </Container>
+    );
+}
