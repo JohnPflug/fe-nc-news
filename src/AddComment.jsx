@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { postComment } from "./api";
 import PostNotification from "./PostNotification";
 
@@ -10,10 +10,6 @@ export default function AddComment({ article_id, commentPosted, setCommentPosted
     const [commentData, setCommentData] = useState("");
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        setCommentData("");
-    }, [isCommenting]);
-
     const handleChange = (e) => {
         setCommentData(e.target.value);
     };
@@ -23,6 +19,7 @@ export default function AddComment({ article_id, commentPosted, setCommentPosted
             username: username,
             body: commentData
         };
+        setCommentData("");
         setIsCommenting(false);
         postComment(article_id, comment)
             .then((response) => {
