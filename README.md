@@ -1,10 +1,6 @@
 # React + Vite
 
-A username variable is hardcoded as 'grumpy19' on line 11 of Comments.jsx. A user muste be signed in to post comments and to delete their own comments. To see what would happen if the user was not signed in, comment out line 11 and uncomment line 12:
-
-let username;
-
-username needs to exist but can be undefined in order to simply read comments.
+A username variable is hardcoded as 'grumpy19' on line 12 of Comments.jsx. A user must be signed in to post comments and to delete their own comments. If the user is not signed in, they can only read comments. To see this behaviour, comment out line 12.
 
 
 
