@@ -19,8 +19,8 @@ export function getArticles(topic, sort_by, order) {
         .then((response) => {
             return response.data;
         })
-        .catch((error) => {
-            console.log(error);
+        .catch((err) => {
+            throw err;
         });
 }
 
@@ -30,8 +30,8 @@ export function getSingleArticle(path) {
         .then((response) => {
             return response.data;
         })
-        .catch((error) => {
-            console.log(error);
+        .catch((err) => {
+            throw err;
         });
 }
 
@@ -41,8 +41,8 @@ export function getComments(path) {
         .then((response) => {
             return response.data;
         })
-        .catch((error) => {
-            console.log(error);
+        .catch((err) => {
+            throw err;
         });
 }
 
@@ -56,9 +56,13 @@ export function patchVotes({ article_id, countChange }) {
         }
     };
 
-    return instance(config).then(response => {
-        return response;
-    });
+    return instance(config)
+        .then(response => {
+            return response;
+        })
+        .catch((err) => {
+            throw err;
+        });
 }
 
 export function postComment(article_id, comment) {
@@ -73,9 +77,9 @@ export function postComment(article_id, comment) {
         .then(response => {
             return response;
         })
-        .catch(error => {
-            console.log(error)
-        })
+        .catch((err) => {
+            throw err;
+        });
 }
 
 export function deleteComment(comment_id) {
@@ -89,9 +93,9 @@ export function deleteComment(comment_id) {
         .then(response => {
             return response;
         })
-        .catch(error => {
-            console.log(error)
-        })
+        .catch((err) => {
+            throw err;
+        });
 }
 
 export function getTopics() {
@@ -100,7 +104,7 @@ export function getTopics() {
         .then(response => {
             return response;
         })
-        .catch(error => {
-            console.log(error)
-        })
+        .catch((err) => {
+            throw err;
+        });
 }
