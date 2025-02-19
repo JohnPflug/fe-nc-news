@@ -1,5 +1,5 @@
-import { getSingleArticle } from "./api";
 import Loading from "./Loading";
+import { getSingleArticle } from "./api";
 import { SingleArticleContainer } from "./BootContainers";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
@@ -7,6 +7,8 @@ import { useParams } from "react-router";
 export default function SingleArticle() {
     const [articleData, setArticleData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null)
+
     const { article_id } = useParams(null);
 
     useEffect(() => {
@@ -15,13 +17,22 @@ export default function SingleArticle() {
                 setArticleData(articles)
                 setIsLoading(false);
             })
-            .catch(error => {
-                console.error('Error fetching data:', error);
+            .catch(err => {
+                setIsLoading(false);
+                setError(err.response.data.msg);
             })
 
     }, [])
 
     return (
-        isLoading ? <Loading /> : <SingleArticleContainer data={articleData} article_id={article_id} />
-    )
+        <>
+            {isLoading ? (
+                <Loading />
+            ) : error ? (
+                <p className="error_message">{error}</p>
+            ) : (
+                <SingleArticleContainer data={articleData} article_id={article_id} />
+            )}
+        </>
+    );
 }

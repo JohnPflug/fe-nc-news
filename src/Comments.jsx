@@ -8,7 +8,8 @@ import RemoveComment from "./RemoveComment";
 import DeletedCommentNotification from "./DeletedCommentNotification";
 
 // Hard-coding username:
-const username = 'grumpy19';
+// const username = 'grumpy19';
+let username;
 
 export default function Comments({ article_id }) {
     const [commentData, setCommentData] = useState(null);
@@ -30,8 +31,10 @@ export default function Comments({ article_id }) {
     return (
         isLoading ? <Loading /> : (
             <>
-                <AddComment article_id={article_id} commentPosted={commentPosted} setCommentPosted={setCommentPosted} />
+                {username ? <AddComment article_id={article_id} commentPosted={commentPosted} setCommentPosted={setCommentPosted} /> : null}
+
                 {commentDeleted ? <DeletedCommentNotification setCommentDeleted={setCommentDeleted} /> : null}
+
                 <ListGroup className="scrollable-comments">
                     {commentData.map((comment) => (
                         <ListGroup.Item key={comment.comment_id}>
@@ -42,7 +45,9 @@ export default function Comments({ article_id }) {
                                 <br />
                                 Comment votes: <b>{comment.votes}</b>
                                 <br />
-                                {(comment.author === username) ? <RemoveComment comment_id={comment.comment_id} setCommentDeleted={setCommentDeleted} /> : null}
+
+                                {username && comment.author === username ? <RemoveComment comment_id={comment.comment_id} setCommentDeleted={setCommentDeleted} /> : null}
+
                             </div>
                         </ListGroup.Item>
                     ))}

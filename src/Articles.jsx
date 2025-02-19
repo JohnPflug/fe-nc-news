@@ -1,16 +1,17 @@
-import { getArticles } from "./api";
 import Loading from "./Loading";
+import { getArticles } from "./api";
 import { ArticlesContainer } from "./BootContainers";
 import { useEffect, useState } from "react";
-import { useSearchParams, useNavigate } from "react-router";
+import { useSearchParams } from "react-router";
 
 export default function Articles() {
-    const [articleData, setArticleData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [articleData, setArticleData] = useState(null);
     const [sortBy, setSortBy] = useState("created_at");
-    const [order, setOrder] = useState("desc")
-    const navigate = useNavigate();
+    const [order, setOrder] = useState("desc");
+    const [error, setError] = useState(null)
+
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const topic = searchParams.get("topic");
     const sort_by = searchParams.get("sort_by");
@@ -22,8 +23,9 @@ export default function Articles() {
                 setArticleData(articles)
                 setIsLoading(false);
             })
-            .catch(error => {
-                console.error('Error fetching data:', error);
+            .catch(err => {
+                setIsLoading(false);
+                setError(err.response.data.msg);
             })
     }, [sortBy, order])
 
@@ -62,7 +64,12 @@ export default function Articles() {
                     </select>
                 </label>
             </form>
-            {isLoading ? <Loading /> : <ArticlesContainer data={articleData} />}
+            {isLoading ? (
+                <Loading />
+            ) : error ? (
+                <p className="error_message">{error}</p>
+            ) : <ArticlesContainer data={articleData} />}
         </>
+
     )
 }
