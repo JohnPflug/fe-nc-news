@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { getComments } from "./api";
 import { ListGroup } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.css";
@@ -6,16 +6,15 @@ import AddComment from "./AddComment";
 import Loading from "./Loading";
 import RemoveComment from "./RemoveComment";
 import DeletedCommentNotification from "./DeletedCommentNotification";
-
-// Hard-coding username:
-let username;
-username = 'grumpy19';
+import { UserContext } from "../contexts/UserContext";
 
 export default function Comments({ article_id }) {
     const [commentData, setCommentData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [commentPosted, setCommentPosted] = useState(false);
     const [commentDeleted, setCommentDeleted] = useState(false);
+
+    const [username, setUsername] = useContext(UserContext);
 
     useEffect(() => {
         getComments(`/articles/${article_id}/comments`)
@@ -31,7 +30,7 @@ export default function Comments({ article_id }) {
     return (
         isLoading ? <Loading /> : (
             <>
-                {username ? <AddComment article_id={article_id} commentPosted={commentPosted} setCommentPosted={setCommentPosted} /> : null}
+                {username ? <AddComment article_id={article_id} commentPosted={commentPosted} setCommentPosted={setCommentPosted} username={username} /> : null}
 
                 {commentDeleted ? <DeletedCommentNotification setCommentDeleted={setCommentDeleted} /> : null}
 

@@ -1,12 +1,7 @@
 # React + Vite
 
-A username variable is hardcoded as 'grumpy19' on line 12 of Comments.jsx. A user must be signed in to post comments and to delete their own comments. If the user is not signed in, they can only read comments. To see this behaviour, comment out line 12.
+'grumpy19' is passed as the username state on line 6 of contexts/UserContext.jsx and is used as a React Context value. If this string is removed...
 
+const [username, setUsername] = useState()
 
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+...or replaced with a non-existent username, the user will be able to read the articles but not vote on them. Moreover, while they will be able to read the comments on each article, they will not be able to post comments, nor delete their own.

@@ -2,10 +2,7 @@ import { useState } from "react";
 import { postComment } from "./api";
 import PostNotification from "./PostNotification";
 
-// Hard-coding username:
-const username = 'grumpy19';
-
-export default function AddComment({ article_id, commentPosted, setCommentPosted }) {
+export default function AddComment({ article_id, commentPosted, setCommentPosted, username }) {
     const [isCommenting, setIsCommenting] = useState(false);
     const [commentData, setCommentData] = useState("");
     const [error, setError] = useState(null);
