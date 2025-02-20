@@ -7,11 +7,12 @@ import SingleArticle from "./SingleArticle";
 import Footer from './Footer';
 import Topics from './Topics';
 import InvalidPath from './InvalidPath';
+import UserContextProvider from "../contexts/UserContext";
 
 function App() {
 
   return (
-    <>
+    <UserContextProvider>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -21,7 +22,7 @@ function App() {
         <Route path="/*" element={< InvalidPath />} />
       </Routes>
       <Footer />
-    </>
+    </UserContextProvider>
   )
 }
 
