@@ -1,5 +1,7 @@
 import './App.css'
 import { Routes, Route } from "react-router";
+
+//Component imports:
 import Header from './Header';
 import Home from './Home';
 import Articles from "./Articles";
@@ -7,6 +9,8 @@ import SingleArticle from "./SingleArticle";
 import Footer from './Footer';
 import Topics from './Topics';
 import InvalidPath from './InvalidPath';
+
+//Context provider:
 import UserContextProvider from "../contexts/UserContext";
 
 function App() {
