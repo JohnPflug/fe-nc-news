@@ -10,7 +10,7 @@
 
 ## Project Description
 ### Introduction
-NC News is a front-end project created using React.js as part of a full-stack web application developed for a JavaScript boot-camp. The project showcases the skills and knowledge acquired during the bootcamp, including building user interfaces, managing state, and integrating with back-end services.
+NC News is a dynamic front-end project crafted with React.js, created as part of a full-stack web application during a JavaScript bootcamp. This project highlights the breadth of skills and knowledge gained throughout the boot-camp, including user interface development, state management, and seamless back-end integration. To explore the backend aspect of this project, check out the repository [be-nc-news](https://github.com/JohnPflug/be-nc-news)
 
 ### Features
 The application allows users to view, comment on, and vote for articles. It includes features such as user authentication, real-time updates, and a responsive design.
@@ -103,7 +103,7 @@ Check out the live version of the application hosted on Netlify:
 [NC News](https://jpt-nc-news.netlify.app/)
 
 ## Credits
-This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
+This portfolio project was created as part of a Digital Skills Boot-camp in Software Engineering provided by [Northcoders](https://northcoders.com/)
 
 ### Image Credits
 - [Education Vectors by Vecteezy](https://www.vecteezy.com/free-vector/education)
